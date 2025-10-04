@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Creative Designer & Marketer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for the Behance embed container */
+        .behance-embed {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%; /* 4:3 aspect ratio, adjust as needed */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+        .behance-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- === HEADER / NAVIGATION === -->
+    <header id="header" class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div id="logo-container">
+                <!-- **YOUR LOGO HERE** Replace the src attribute below with the path to your logo image. 
+                     It can be a local file (e.g., './logo.png') or a URL. 
+                -->
+                <img src="https://placehold.co/120x50/black/white?text=YourLogo" alt="Your Logo" class="h-10">
+            </div>
+            <ul class="hidden md:flex items-center space-x-8">
+                <li><a href="#about" class="text-gray-600 hover:text-indigo-600 transition duration-300">About</a></li>
+                <li><a href="#skills" class="text-gray-600 hover:text-indigo-600 transition duration-300">Skills</a></li>
+                <li><a href="#work" class="text-gray-600 hover:text-indigo-600 transition duration-300">My Work</a></li>
+                <li><a href="#behance" class="text-gray-600 hover:text-indigo-600 transition duration-300">Behance</a></li>
+                <li><a href="#contact" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300">Contact</a></li>
+            </ul>
+            <button id="mobile-menu-button" class="md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4">
+            <a href="#about" class="block py-2 text-gray-600 hover:text-indigo-600">About</a>
+            <a href="#skills" class="block py-2 text-gray-600 hover:text-indigo-600">Skills</a>
+            <a href="#work" class="block py-2 text-gray-600 hover:text-indigo-600">My Work</a>
+            <a href="#behance" class="block py-2 text-gray-600 hover:text-indigo-600">Behance</a>
+            <a href="#contact" class="block mt-2 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 text-center">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- === HERO SECTION === -->
+        <section id="hero" class="text-center py-20">
+            <h1 id="hero-headline" class="text-4xl md:text-6xl font-bold leading-tight mb-4"></h1>
+            <p id="hero-subheadline" class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8"></p>
+            <div class="flex justify-center space-x-4">
+                <a href="#work" class="bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition duration-300">View My Work</a>
+                <a href="#contact" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-md font-semibold hover:bg-gray-300 transition duration-300">Get In Touch</a>
+            </div>
+        </section>
+
+        <!-- === ABOUT SECTION === -->
+        <section id="about" class="py-20">
+            <div class="grid md:grid-cols-5 gap-10 items-center">
+                <div class="md:col-span-2">
+                    <img id="about-image" src="" alt="Portrait of Your Name" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="md:col-span-3">
+                    <h2 class="text-3xl font-bold mb-4">About Me</h2>
+                    <p id="about-text" class="text-gray-600 leading-relaxed"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- === SKILLS SECTION === -->
+        <section id="skills" class="py-20 bg-white rounded-lg shadow-lg -mx-6 px-6">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold">My Skills</h2>
+                <p class="text-gray-600 mt-2">A blend of creativity and strategic marketing.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-center md:text-left">Creative Design</h3>
+                    <div id="design-skills-container" class="space-y-4">
+                        <!-- Design skills will be populated here by JavaScript -->
+                    </div>
+                </div>
+                 <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-center md:text-left">Marketing</h3>
+                    <div id="marketing-skills-container" class="space-y-4">
+                        <!-- Marketing skills will be populated here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === MY WORK / PORTFOLIO SECTION === -->
+        <section id="work" class="py-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold">My Work</h2>
+                <p class="text-gray-600 mt-2">Here are some of my favorite projects.</p>
+            </div>
+            <!-- **WHERE TO ADD YOUR DESIGNS**
+                 The grid below will be filled with the projects you define in the 'portfolioData'
+                 JavaScript object at the bottom of this file. 
+                 To add a new design:
+                 1. Add a new object to the 'projects' array in the 'portfolioData'.
+                 2. Provide a 'title', 'description', and 'image' path for your design.
+                 3. The 'image' path can be a local file (e.g., './images/project1.jpg') or a URL.
+            -->
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+        </section>
+        
+        <!-- === BEHANCE SECTION === -->
+        <section id="behance" class="py-20 bg-gray-100 -mx-6 px-6 rounded-lg">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold">Featured on Behance</h2>
+                <p class="text-gray-600 mt-2">Dive deeper into my creative process and project details.</p>
+            </div>
+            <!-- **HOW TO EMBED YOUR BEHANCE CONTENT**
+                 1. Go to your project on Behance.
+                 2. Click the "Embed" button (usually has a </> icon).
+                 3. Copy the HTML code provided in the modal.
+                 4. Paste that code directly inside the div below this comment.
+                 I've included a placeholder below to show you how it looks.
+            -->
+            <div id="behance-container" class="max-w-4xl mx-auto">
+                <!-- PASTE YOUR BEHANCE EMBED CODE HERE -->
+                <div class="behance-embed">
+                    <!-- Example Behance Embed Code (Replace with your own) -->
+                    <iframe src="https://www.behance.net/embed/project/156434449?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share></iframe>
+                </div>
+                 <!-- You can add more Behance embeds by copying the structure above -->
+            </div>
+        </section>
+
+        <!-- === CONTACT SECTION === -->
+        <section id="contact" class="py-20 text-center">
+             <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
+             <p id="contact-text" class="text-gray-600 max-w-2xl mx-auto mb-8"></p>
+             <div id="social-links-container" class="flex justify-center space-x-6">
+                <!-- Social links will be populated here -->
+             </div>
+        </section>
+
+    </main>
+    
+    <!-- === FOOTER === -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-6 text-center">
+            <p>&copy; <span id="footer-year"></span> <span id="footer-name"></span>. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- =================================================================== -->
+    <!-- === CUSTOMIZE YOUR PORTFOLIO CONTENT HERE === -->
+    <!-- =================================================================== -->
+    <script>
+        const portfolioData = {
+            // --- Personal Information ---
+            yourName: "Alex Doe",
+            hero: {
+                headline: "Creative Designer & Strategic Marketer",
+                subheadline: "I craft beautiful brand experiences and drive growth through data-informed marketing strategies."
+            },
+            about: {
+                image: "https://placehold.co/600x600/a3a3a3/ffffff?text=Your+Photo", // Replace with your photo URL
+                text: "Hello! I'm Alex, a passionate designer and marketer with a knack for creating compelling visual narratives that resonate with audiences. With over 5 years of experience, I specialize in brand identity, digital marketing campaigns, and UI/UX design. I thrive on turning complex ideas into simple, elegant, and effective solutions."
+            },
+
+            // --- Skills ---
+            // List your skills here. They will be displayed with progress bars.
+            // value is the percentage (0-100) for the bar width.
+            skills: {
+                design: [
+                    { name: "UI/UX Design", value: 95 },
+                    { name: "Brand Identity & Logo Design", value: 90 },
+                    { name: "Adobe Creative Suite (Ps, Ai, Id)", value: 92 },
+                    { name: "Figma & Sketch", value: 88 },
+                ],
+                marketing: [
+                    { name: "Digital Strategy", value: 90 },
+                    { name: "Content Marketing & SEO", value: 85 },
+                    { name: "Social Media Management", value: 88 },
+                    { name: "Email Marketing Automation", value: 82 },
+                ]
+            },
+
+            // --- Portfolio Projects ---
+            // **ADD YOUR DESIGNS HERE**
+            // Add or remove objects to this array to update your portfolio.
+            // image: Use a local path (e.g., './images/project1.png') or a URL.
+            projects: [
+                {
+                    title: "Brand Redesign for Aura",
+                    description: "A complete brand identity overhaul for a wellness tech startup.",
+                    image: "https://placehold.co/600x400/818cf8/ffffff?text=Project+1"
+                },
+                {
+                    title: "E-commerce UX Enhancement",
+                    description: "Redesigned the checkout flow, increasing conversion by 15%.",
+                    image: "https://placehold.co/600x400/f472b6/ffffff?text=Project+2"
+                },
+                {
+                    title: "Social Media Campaign",
+                    description: "A viral marketing campaign that boosted engagement by 200%.",
+                    image: "https://placehold.co/600x400/fbbf24/ffffff?text=Project+3"
+                },
+                {
+                    title: "Marketing Website for SaaS",
+                    description: "Designed and developed a new marketing website focused on lead generation.",
+                    image: "https://placehold.co/600x400/a3e635/ffffff?text=Project+4"
+                },
+                {
+                    title: "Mobile App Interface",
+                    description: "A clean and intuitive interface for a new productivity app.",
+                    image: "https://placehold.co/600x400/38bdf8/ffffff?text=Project+5"
+                },
+                {
+                    title: "Content Marketing Hub",
+                    description: "Created a resource hub with blog posts, and guides to drive organic traffic.",
+                    image: "https://placehold.co/600x400/fb923c/ffffff?text=Project+6"
+                }
+            ],
+            
+            // --- Contact & Social Links ---
+            contact: {
+                text: "I'm currently available for freelance projects and full-time opportunities. Feel free to reach out via email or connect with me on social media!",
+                socials: [
+                    { name: "Email", url: "mailto:your.email@example.com", icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>' },
+                    { name: "LinkedIn", url: "https://www.linkedin.com/", icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>' },
+                    { name: "Behance", url: "https://www.behance.net/", icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M16.5 6.5h-9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1zM7.5 14.5h9a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1zM10.5 10.5h-3"></path></svg>' },
+                    { name: "Dribbble", url: "https://dribbble.com/", icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><circle cx="12" cy="12" r="10"></circle><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 4.1-13.74 2.43m1.45 10.02c4.66-2.34 9.42-3.64 14.01-3.23"></path></svg>'}
+                ]
+            }
+        };
+
+        // --- SCRIPT TO POPULATE THE PAGE ---
+        // You don't need to edit anything below this line.
+        document.addEventListener('DOMContentLoaded', () => {
+            // General Info
+            document.title = `${portfolioData.yourName} | Creative Designer & Marketer`;
+            document.getElementById('hero-headline').textContent = portfolioData.hero.headline;
+            document.getElementById('hero-subheadline').textContent = portfolioData.hero.subheadline;
+            document.getElementById('about-image').src = portfolioData.about.image;
+            document.getElementById('about-text').textContent = portfolioData.about.text;
+            document.getElementById('contact-text').textContent = portfolioData.contact.text;
+            document.getElementById('footer-year').textContent = new Date().getFullYear();
+            document.getElementById('footer-name').textContent = portfolioData.yourName;
+
+            // Skills
+            const designSkillsContainer = document.getElementById('design-skills-container');
+            portfolioData.skills.design.forEach(skill => {
+                const skillEl = document.createElement('div');
+                skillEl.innerHTML = `
+                    <div class="flex justify-between mb-1">
+                        <span class="text-base font-medium text-gray-700">${skill.name}</span>
+                        <span class="text-sm font-medium text-gray-700">${skill.value}%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-indigo-600 h-2.5 rounded-full" style="width: ${skill.value}%"></div>
+                    </div>
+                `;
+                designSkillsContainer.appendChild(skillEl);
+            });
+            
+            const marketingSkillsContainer = document.getElementById('marketing-skills-container');
+            portfolioData.skills.marketing.forEach(skill => {
+                const skillEl = document.createElement('div');
+                skillEl.innerHTML = `
+                    <div class="flex justify-between mb-1">
+                        <span class="text-base font-medium text-gray-700">${skill.name}</span>
+                        <span class="text-sm font-medium text-gray-700">${skill.value}%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-pink-600 h-2.5 rounded-full" style="width: ${skill.value}%"></div>
+                    </div>
+                `;
+                marketingSkillsContainer.appendChild(skillEl);
+            });
+
+            // Projects
+            const projectsGrid = document.getElementById('projects-grid');
+            portfolioData.projects.forEach(project => {
+                const projectEl = document.createElement('div');
+                projectEl.className = 'bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300';
+                projectEl.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">${project.title}</h3>
+                        <p class="text-gray-600">${project.description}</p>
+                    </div>
+                `;
+                projectsGrid.appendChild(projectEl);
+            });
+            
+            // Social Links
+            const socialContainer = document.getElementById('social-links-container');
+            portfolioData.contact.socials.forEach(social => {
+                const link = document.createElement('a');
+                link.href = social.url;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.title = social.name;
+                link.className = 'text-gray-500 hover:text-indigo-600 transition duration-300';
+                link.innerHTML = social.icon;
+                socialContainer.appendChild(link);
+            });
+            
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+
+    </script>
+</body>
+</html>
