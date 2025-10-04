@@ -118,13 +118,18 @@
                 <h2 class="text-3xl font-bold">My Work</h2>
                 <p class="text-gray-600 mt-2">Here are some of my favorite projects.</p>
             </div>
+            
+            <!-- **PROJECT CATEGORY FILTERS** -->
+            <!-- Filter buttons will be dynamically inserted here -->
+            <div id="project-filters" class="flex justify-center flex-wrap gap-2 mb-12">
+            </div>
+
             <!-- **WHERE TO ADD YOUR DESIGNS**
                  The grid below will be filled with the projects you define in the 'portfolioData'
                  JavaScript object at the bottom of this file. 
                  To add a new design:
                  1. Add a new object to the 'projects' array in the 'portfolioData'.
-                 2. Provide a 'title', 'description', and 'image' path for your design.
-                 3. The 'image' path can be a local file (e.g., './images/project1.jpg') or a URL.
+                 2. Provide a 'title', 'description', 'image', 'category', and 'link' for your design.
             -->
             <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Projects will be dynamically inserted here -->
@@ -178,10 +183,10 @@
     <script>
         const portfolioData = {
             // --- Personal Information ---
-            yourName: "Alex Doe",
+            yourName: "VI Studio",
             hero: {
-                headline: "Creative Designer & Strategic Marketer",
-                subheadline: "I craft beautiful brand experiences and drive growth through data-informed marketing strategies."
+                headline: "For Creative Designs & Strategic Marketing",
+                subheadline: "We craft beautiful brand experiences and drive growth through data-informed marketing strategies."
             },
             about: {
                 image: "https://placehold.co/600x600/a3a3a3/ffffff?text=Your+Photo", // Replace with your photo URL
@@ -189,8 +194,6 @@
             },
 
             // --- Skills ---
-            // List your skills here. They will be displayed with progress bars.
-            // value is the percentage (0-100) for the bar width.
             skills: {
                 design: [
                     { name: "UI/UX Design", value: 95 },
@@ -208,38 +211,49 @@
 
             // --- Portfolio Projects ---
             // **ADD YOUR DESIGNS HERE**
-            // Add or remove objects to this array to update your portfolio.
-            // image: Use a local path (e.g., './images/project1.png') or a URL.
+            // Add a 'category' (e.g., "Branding", "UI/UX") and a 'link' to each project.
             projects: [
                 {
                     title: "Brand Redesign for Aura",
+                    category: "Branding",
                     description: "A complete brand identity overhaul for a wellness tech startup.",
-                    image: "https://placehold.co/600x400/818cf8/ffffff?text=Project+1"
+                    image: "https://placehold.co/600x400/818cf8/ffffff?text=Project+1",
+                    link: "#"
                 },
                 {
                     title: "E-commerce UX Enhancement",
+                    category: "UI/UX",
                     description: "Redesigned the checkout flow, increasing conversion by 15%.",
-                    image: "https://placehold.co/600x400/f472b6/ffffff?text=Project+2"
+                    image: "https://placehold.co/600x400/f472b6/ffffff?text=Project+2",
+                    link: "#"
                 },
                 {
                     title: "Social Media Campaign",
+                    category: "Marketing",
                     description: "A viral marketing campaign that boosted engagement by 200%.",
-                    image: "https://placehold.co/600x400/fbbf24/ffffff?text=Project+3"
+                    image: "https://placehold.co/600x400/fbbf24/ffffff?text=Project+3",
+                    link: "#"
                 },
                 {
                     title: "Marketing Website for SaaS",
+                    category: "UI/UX",
                     description: "Designed and developed a new marketing website focused on lead generation.",
-                    image: "https://placehold.co/600x400/a3e635/ffffff?text=Project+4"
+                    image: "https://placehold.co/600x400/a3e635/ffffff?text=Project+4",
+                    link: "#"
                 },
                 {
                     title: "Mobile App Interface",
+                    category: "UI/UX",
                     description: "A clean and intuitive interface for a new productivity app.",
-                    image: "https://placehold.co/600x400/38bdf8/ffffff?text=Project+5"
+                    image: "https://placehold.co/600x400/38bdf8/ffffff?text=Project+5",
+                    link: "#"
                 },
                 {
                     title: "Content Marketing Hub",
+                    category: "Marketing",
                     description: "Created a resource hub with blog posts, and guides to drive organic traffic.",
-                    image: "https://placehold.co/600x400/fb923c/ffffff?text=Project+6"
+                    image: "https://placehold.co/600x400/fb923c/ffffff?text=Project+6",
+                    link: "#"
                 }
             ],
             
@@ -301,18 +315,60 @@
 
             // Projects
             const projectsGrid = document.getElementById('projects-grid');
-            portfolioData.projects.forEach(project => {
-                const projectEl = document.createElement('div');
-                projectEl.className = 'bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300';
-                projectEl.innerHTML = `
-                    <img src="${project.image}" alt="${project.title}" class="w-full h-56 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">${project.title}</h3>
-                        <p class="text-gray-600">${project.description}</p>
-                    </div>
-                `;
-                projectsGrid.appendChild(projectEl);
+            const projectFilters = document.getElementById('project-filters');
+
+            const categories = ['All', ...new Set(portfolioData.projects.map(p => p.category))];
+
+            categories.forEach(category => {
+                const button = document.createElement('button');
+                button.textContent = category;
+                button.className = 'px-4 py-2 rounded-md font-semibold transition duration-300';
+                button.dataset.category = category;
+
+                if (category === 'All') {
+                    button.classList.add('bg-indigo-600', 'text-white');
+                } else {
+                    button.classList.add('bg-gray-200', 'text-gray-800', 'hover:bg-gray-300');
+                }
+
+                button.addEventListener('click', (e) => {
+                    document.querySelectorAll('#project-filters button').forEach(btn => {
+                        btn.classList.remove('bg-indigo-600', 'text-white');
+                        btn.classList.add('bg-gray-200', 'text-gray-800', 'hover:bg-gray-300');
+                    });
+                    e.target.classList.add('bg-indigo-600', 'text-white');
+                    e.target.classList.remove('bg-gray-200', 'text-gray-800', 'hover:bg-gray-300');
+
+                    renderProjects(category);
+                });
+                projectFilters.appendChild(button);
             });
+            
+            const renderProjects = (category) => {
+                projectsGrid.innerHTML = '';
+                
+                const filteredProjects = category === 'All'
+                    ? portfolioData.projects
+                    : portfolioData.projects.filter(p => p.category === category);
+
+                filteredProjects.forEach(project => {
+                    const projectEl = document.createElement('div');
+                    projectEl.className = 'bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col';
+                    projectEl.innerHTML = `
+                        <img src="${project.image}" alt="${project.title}" class="w-full h-56 object-cover">
+                        <div class="p-6 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold mb-2">${project.title}</h3>
+                            <p class="text-gray-600 mb-4 flex-grow">${project.description}</p>
+                            <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="mt-auto inline-block bg-indigo-100 text-indigo-800 text-center px-4 py-2 rounded-md font-semibold hover:bg-indigo-200 transition duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    `;
+                    projectsGrid.appendChild(projectEl);
+                });
+            }
+
+            renderProjects('All');
             
             // Social Links
             const socialContainer = document.getElementById('social-links-container');
@@ -338,3 +394,4 @@
     </script>
 </body>
 </html>
+
