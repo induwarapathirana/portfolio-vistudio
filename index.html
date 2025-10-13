@@ -1,416 +1,351 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VI Studio | Creative Designers & Marketers</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Style for the Behance embed container */
-        .behance-embed {
-            position: relative;
-            width: 100%;
-            padding-bottom: 75%; /* 4:3 aspect ratio, adjust as needed */
-            height: 0;
-            overflow: hidden;
-            border-radius: 0.5rem;
-        }
-        .behance-embed iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VI Studio | Creative Designers & Marketers</title>
+  <meta name="description" content="VI Studio crafts beautiful brand experiences and drives growth through data‑informed marketing strategies. Explore our work and get in touch." />
+  <meta property="og:title" content="VI Studio | Creative Designers & Marketers" />
+  <meta property="og:description" content="Creative design + strategic marketing. See our projects and contact us for collaborations." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="Heading.png" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --ring: 0 0% 100%; }
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    /* Behance responsive wrapper */
+    .behance-embed { position: relative; width: 100%; padding-bottom: 62.5%; height: 0; overflow: hidden; border-radius: .75rem; }
+    .behance-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    /* fade / rise on scroll */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+  </style>
 </head>
-
 <body class="bg-gray-50 text-gray-800">
+  <!-- Top Announcement / Contact Quick Bar -->
+  <div class="bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-600 text-white">
+    <div class="container mx-auto px-6 py-2 text-sm flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+      <span class="inline-flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3 4.18 2 2 0 0 1 5 2h2.09a2 2 0 0 1 2 1.72c.12.89.32 1.76.59 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.12a2 2 0 0 1 2.11-.45c.84.27 1.71.47 2.6.59A2 2 0 0 1 22 16.92z"/></svg> WhatsApp: <a class="underline underline-offset-2 hover:opacity-90" href="https://wa.me/94773027782" target="_blank" rel="noopener noreferrer">+94 77 302 7782</a></span>
+      <span class="hidden sm:inline">•</span>
+      <a class="inline-flex items-center gap-2 underline underline-offset-2 hover:opacity-90" href="mailto:induwara1203@gmail.com"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg> induwara1203@gmail.com</a>
+    </div>
+  </div>
 
-    <!-- === HEADER / NAVIGATION === -->
-    <header id="header" class="bg-white shadow-md sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div id="logo-container">
-                <!-- **YOUR LOGO HERE** Replace the src attribute below with the path to your logo image. 
-                     It can be a local file (e.g., './logo.png') or a URL. 
-                -->
-                <img src="Heading.png" alt="VI Studio Logo" class="h-10">
-            </div>
-            <ul class="hidden md:flex items-center space-x-8">
-                <li><a href="#about" class="text-gray-600 hover:text-indigo-600 transition duration-300">About</a></li>
-                <li><a href="#skills" class="text-gray-600 hover:text-indigo-600 transition duration-300">Skills</a></li>
-                <li><a href="#work" class="text-gray-600 hover:text-indigo-600 transition duration-300">My Work</a></li>
-                <li><a href="#behance" class="text-gray-600 hover:text-indigo-600 transition duration-300">Behance</a></li>
-                <li><a href="#contact" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300">Contact</a></li>
-            </ul>
-            <button id="mobile-menu-button" class="md:hidden">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4">
-            <a href="#about" class="block py-2 text-gray-600 hover:text-indigo-600">About</a>
-            <a href="#skills" class="block py-2 text-gray-600 hover:text-indigo-600">Skills</a>
-            <a href="#work" class="block py-2 text-gray-600 hover:text-indigo-600">My Work</a>
-            <a href="#behance" class="block py-2 text-gray-600 hover:text-indigo-600">Behance</a>
-            <a href="#contact" class="block mt-2 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 text-center">Contact</a>
+  <!-- Header / Nav -->
+  <header id="header" class="bg-white/80 backdrop-blur supports-[backdrop-filter]:backdrop-blur sticky top-0 z-50 shadow-sm">
+    <nav class="container mx-auto px-6 py-4 flex items-center justify-between" aria-label="Primary">
+      <a href="#hero" class="inline-flex items-center gap-3" aria-label="VI Studio Home">
+        <img src="Heading.png" alt="VI Studio logo" class="h-10 w-auto" loading="eager" />
+      </a>
+      <ul class="hidden md:flex items-center gap-8">
+        <li><a href="#about" class="nav-link text-gray-700 hover:text-indigo-600">About</a></li>
+        <li><a href="#skills" class="nav-link text-gray-700 hover:text-indigo-600">Skills</a></li>
+        <li><a href="#work" class="nav-link text-gray-700 hover:text-indigo-600">Our Work</a></li>
+        <li><a href="#behance" class="nav-link text-gray-700 hover:text-indigo-600">Behance</a></li>
+        <li><a href="#contact" class="inline-flex items-center bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Contact</a></li>
+      </ul>
+      <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-gray-200 hover:bg-gray-100" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="md:hidden hidden px-6 pb-6">
+      <div class="grid gap-2 rounded-lg border border-gray-200 p-3 bg-white shadow-sm">
+        <a href="#about" class="block px-3 py-2 rounded hover:bg-gray-50">About</a>
+        <a href="#skills" class="block px-3 py-2 rounded hover:bg-gray-50">Skills</a>
+        <a href="#work" class="block px-3 py-2 rounded hover:bg-gray-50">Our Work</a>
+        <a href="#behance" class="block px-3 py-2 rounded hover:bg-gray-50">Behance</a>
+        <a href="#contact" class="block px-3 py-2 rounded bg-indigo-600 text-white hover:bg-indigo-700">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6">
+    <!-- Hero -->
+    <section id="hero" class="relative py-20 md:py-28 text-center">
+      <div class="absolute inset-0 -z-10 bg-gradient-to-b from-indigo-50 via-white to-white"></div>
+      <h1 id="hero-headline" class="text-4xl md:text-6xl font-bold leading-tight mb-4"></h1>
+      <p id="hero-subheadline" class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8"></p>
+      <div class="flex justify-center gap-4">
+        <a href="#work" class="bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">View Our Work</a>
+        <a href="#contact" class="bg-white border border-gray-200 text-gray-900 px-6 py-3 rounded-md font-semibold hover:bg-gray-50">Get In Touch</a>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-16 md:py-20 reveal">
+      <div class="grid md:grid-cols-5 gap-10 items-center">
+        <div class="md:col-span-2">
+          <img id="about-image" src="" alt="Portrait" class="rounded-xl shadow-lg w-full object-cover" loading="lazy" />
         </div>
-    </header>
-
-    <main class="container mx-auto px-6 py-12">
-
-        <!-- === HERO SECTION === -->
-        <section id="hero" class="text-center py-20">
-            <h1 id="hero-headline" class="text-4xl md:text-6xl font-bold leading-tight mb-4"></h1>
-            <p id="hero-subheadline" class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8"></p>
-            <div class="flex justify-center space-x-4">
-                <a href="#work" class="bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition duration-300">View My Work</a>
-                <a href="#contact" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-md font-semibold hover:bg-gray-300 transition duration-300">Get In Touch</a>
-            </div>
-        </section>
-
-        <!-- === ABOUT SECTION === -->
-        <section id="about" class="py-20">
-            <div class="grid md:grid-cols-5 gap-10 items-center">
-                <div class="md:col-span-2">
-                    <img id="about-image" src="" alt="Portrait of Your Name" class="rounded-lg shadow-xl w-full">
-                </div>
-                <div class="md:col-span-3">
-                    <h2 class="text-3xl font-bold mb-4">About Us</h2>
-                    <p id="about-text" class="text-gray-600 leading-relaxed"></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- === SKILLS SECTION === -->
-        <section id="skills" class="py-20 bg-white rounded-lg shadow-lg -mx-6 px-6">
-             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold">Who we are</h2>
-                <p class="text-gray-600 mt-2">A blend of creativity and strategic marketing.</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4 text-center md:text-left">Creative Design</h3>
-                    <div id="design-skills-container" class="space-y-4">
-                        <!-- Design skills will be populated here by JavaScript -->
-                    </div>
-                </div>
-                 <div>
-                    <h3 class="text-2xl font-semibold mb-4 text-center md:text-left">Marketing</h3>
-                    <div id="marketing-skills-container" class="space-y-4">
-                        <!-- Marketing skills will be populated here by JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- === MY WORK / PORTFOLIO SECTION === -->
-        <section id="work" class="py-20">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold">Our Work</h2>
-                <p class="text-gray-600 mt-2">Here are some of our favorite projects.</p>
-            </div>
-            
-            <!-- **PROJECT CATEGORY FILTERS** -->
-            <!-- Filter buttons will be dynamically inserted here -->
-            <div id="project-filters" class="flex justify-center flex-wrap gap-2 mb-12">
-            </div>
-
-            <!-- **WHERE TO ADD YOUR DESIGNS**
-                 The grid below will be filled with the projects you define in the 'portfolioData'
-                 JavaScript object at the bottom of this file. 
-                 To add a new design:
-                 1. Add a new object to the 'projects' array in the 'portfolioData'.
-                 2. Provide a 'title', 'description', 'image', 'category', and 'link' for your design.
-            -->
-            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Projects will be dynamically inserted here -->
-            </div>
-        </section>
-        
-        <!-- === BEHANCE SECTION === -->
-        <section id="behance" class="py-20 bg-gray-100 -mx-6 px-6 rounded-lg">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold">Featured on Behance</h2>
-                <p class="text-gray-600 mt-2">Dive deeper into my creative process and project details.</p>
-            </div>
-            <!-- **HOW TO EMBED YOUR BEHANCE CONTENT**
-                 1. Go to your project on Behance.
-                 2. Click the "Embed" button (usually has a </> icon).
-                 3. Copy the HTML code provided in the modal.
-                 4. Paste that code directly inside the div below this comment.
-                 I've included a placeholder below to show you how it looks.
-            -->
-            
-        </section>
-
-        <!-- === CONTACT SECTION === -->
-        <section id="contact" class="py-20 text-center">
-             <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
-             <p id="contact-text" class="text-gray-600 max-w-2xl mx-auto mb-8"></p>
-             <div id="social-links-container" class="flex justify-center space-x-6">
-                <!-- Social links will be populated here -->
-            <a href="wa.me/94773027782" target="_blank" rel="noopener noreferrer" class="mt-auto inline-block bg-indigo-100 text-indigo-800 text-center px-4 py-2 rounded-md font-semibold hover:bg-indigo-200 transition duration-300">
-                Contact Us
-            </a>
-                 <br>
-             </div>
-        </section>
-
-    </main>
-    
-    <!-- === FOOTER === -->
-    <footer class="bg-gray-800 text-white">
-        <div class="container mx-auto px-6 py-6 text-center">
-            <p>&copy; <span id="footer-year"></span> <span id="footer-name"></span>. All Rights Reserved.</p>
+        <div class="md:col-span-3">
+          <h2 class="text-3xl font-bold mb-4">About Us</h2>
+          <p id="about-text" class="text-gray-600 leading-relaxed"></p>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <!-- =================================================================== -->
-    <!-- === CUSTOMIZE YOUR PORTFOLIO CONTENT HERE === -->
-    <!-- =================================================================== -->
-    <script>
-        const portfolioData = {
-            // --- Personal Information ---
-            yourName: "VI Studio",
-            hero: {
-                headline: "For Creative Designs & Strategic Marketing",
-                subheadline: "We craft beautiful brand experiences and drive growth through data-informed marketing strategies."
-            },
-            about: {
-                image: "Heading.png", // Replace with your photo URL
-                text: "Hello! We are VI Studio, passionate designers and marketers with a knack for creating compelling visual narratives that resonate with audiences. With over 2 years of experience, We specialize in brand identity, digital marketing campaigns, and UI/UX design. We thrive on turning complex ideas into simple, elegant, and effective solutions."
-            },
+    <!-- Skills -->
+    <section id="skills" class="py-16 md:py-20 bg-white rounded-2xl shadow-sm reveal">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold">Who we are</h2>
+        <p class="text-gray-600 mt-2">A blend of creativity and strategic marketing.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-2xl font-semibold mb-4 text-center md:text-left">Creative Design</h3>
+          <div id="design-skills-container" class="space-y-4"></div>
+        </div>
+        <div>
+          <h3 class="text-2xl font-semibold mb-4 text-center md:text-left">Marketing</h3>
+          <div id="marketing-skills-container" class="space-y-4"></div>
+        </div>
+      </div>
+    </section>
 
-            // --- Skills ---
-            skills: {
-                design: [
-                    { name: "UI/UX Design", value: 95 },
-                    { name: "Brand Identity & Logo Design", value: 90 },
-                    { name: "Adobe Creative Suite (Ps, Ai, Id)", value: 82 },
-                    { name: "Figma & Sketch", value: 88 },
-                ],
-                marketing: [
-                    { name: "Digital Strategy", value: 90 },
-                    { name: "Content Marketing & SEO", value: 85 },
-                    { name: "Social Media Management", value: 88 },
-                    { name: "Email Marketing Automation", value: 82 },
-                ]
-            },
+    <!-- Work / Portfolio -->
+    <section id="work" class="py-16 md:py-20 reveal">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold">Our Work</h2>
+        <p class="text-gray-600 mt-2">Here are some of our favorite projects.</p>
+      </div>
+      <div id="project-filters" class="flex justify-center flex-wrap gap-2 mb-10"></div>
+      <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </section>
 
-            // --- Portfolio Projects ---
-            // **ADD YOUR DESIGNS HERE**
-            // Add a 'category' (e.g., "Branding", "UI/UX") and a 'link' to each project.
-            projects: [
-                {
-                    title: "Jumping Beans Cafe: Rebranding & Social Media Marketing",
-                    category: "Marketing",
-                    description: "A complete brand identity overhaul for a cafe in Colombo",
-                    image: "project 1.png",
-                    link: "https://www.instagram.com/jumping_beans_cafe/"
-                },
-                {
-                    title: "DigiYamu: Digital Bus Booking System",
-                    category: "UI/UX",
-                    description: "Futuristic Bus/Train Ticketing concept designed for Sri Lanka",
-                    image: "digiyamu_ui.png",
-                    link: "https://www.behance.net/gallery/222088883/DIGIyamu-your-public-transport-friend-in-Sri-Lanka"
-                },
-                {
-                    title: "islanders.lk social media and web management",
-                    category: "Marketing",
-                    description: "From Logo Design to Brand awareness, to Website Management",
-                    image: "project 2.png",
-                    link: "https://www.instagram.com/islanders.lk_online/"
-                },
-                {
-                    title: "Fleura Lifestyle: Marketing and Designing",
-                    category: "Marketing",
-                    description: "From Logo Design to Brand awareness, to Product Management",
-                    image: "project 3.png",
-                    link: "https://www.instagram.com/fleura.lifestyle/"
-                },
-                {
-                    title: "Form Responses UI for Easy Analytics and Marketing",
-                    category: "UI/UX",
-                    description: "Form Responses with Analytics Windows and Easy Data reusable Ideas for Marketing Purposes",
-                    image: "formresponses_ui.png",
-                    link: "https://www.behance.net/gallery/215656263/Form-Responses-UI-for-Easy-Analytics"
-                },
-                {
-                    title: "Dosa Hut for an Indian Restaurant in UK",
-                    category: "UI/UX",
-                    description: "Designed a UI design with all functionalities for an Indian Restaurant in UK",
-                    image: "dosahut_ui.png",
-                    link: "https://www.behance.net/gallery/192885321/Dosa-and-Biriyani-Hut"
-                },
-                {
-                    title: "Job Opportunity Portal with AIESECxTwinery",
-                    category: "UI/UX",
-                    description: "Opportunities portal with AIESEC for promote Internships with Twinery",
-                    image: "aiesectwinery_ui.png",
-                    link: "https://www.behance.net/gallery/195221715/Partner-Landing-Page"
-                },
-                {
-                    title: "Personal Loan Futuristic UI for Banks in Sri Lanka",
-                    category: "UI/UX",
-                    description: "Created conceptual secured UI design for Personal Loan Applying",
-                    image: "cim_ui.png",
-                    link: "https://www.behance.net/gallery/193803741/Personal-Loan-Application"
-                },
-                {
-                    title: "Presentation/Slides Design for National Sustainable Innovation Conference ",
-                    category: "Presentation/Slides",
-                    description: "Designed the full slides set for MAS Innovations for their Competition",
-                    image: "mas_presentation.png",
-                    link: "https://www.behance.net/gallery/222595407/Presentation-on-Sustainably-Product-Manufacturing"
-                }
-                
-            ],
-            
-            // --- Contact & Social Links ---
-            contact: {
-                text: "I'm currently available for freelance projects and full-time opportunities. Feel free to reach out via email or connect with me on social media!",
-                socials: [
-                    { name: "Email", url: "mailto:induwara1203@gmail.com", icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>' },
-                    { name: "LinkedIn", url: "https://www.linkedin.com/in/induwara-pathirana/", icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>' },
-                    { name: "Behance", url: "https://www.behance.net/induwarabandara/", icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M16.5 6.5h-9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1zM7.5 14.5h9a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1zM10.5 10.5h-3"></path></svg>' },
-                    //{ name: "Dribbble", url: "https://dribbble.com/", icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><circle cx="12" cy="12" r="10"></circle><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 4.1-13.74 2.43m1.45 10.02c4.66-2.34 9.42-3.64 14.01-3.23"></path></svg>'}
-                ]
-            }
-        };
+    <!-- Behance -->
+    <section id="behance" class="py-16 md:py-20 bg-gray-100 rounded-2xl reveal">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold">Featured on Behance</h2>
+        <p class="text-gray-600 mt-2">Dive deeper into my creative process and project details.</p>
+      </div>
+      <!-- Paste your Behance iframe embed below (kept empty by default to preserve your content) -->
+      <div class="behance-embed bg-white/50 border border-gray-200"></div>
+    </section>
 
-        // --- SCRIPT TO POPULATE THE PAGE ---
-        // You don't need to edit anything below this line.
-        document.addEventListener('DOMContentLoaded', () => {
-            // General Info
-            document.title = `${portfolioData.yourName} | Creative Designer & Marketer`;
-            document.getElementById('hero-headline').textContent = portfolioData.hero.headline;
-            document.getElementById('hero-subheadline').textContent = portfolioData.hero.subheadline;
-            document.getElementById('about-image').src = portfolioData.about.image;
-            document.getElementById('about-text').textContent = portfolioData.about.text;
-            document.getElementById('contact-text').textContent = portfolioData.contact.text;
-            document.getElementById('footer-year').textContent = new Date().getFullYear();
-            document.getElementById('footer-name').textContent = portfolioData.yourName;
+    <!-- Contact -->
+    <section id="contact" class="py-16 md:py-20 text-center reveal">
+      <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
+      <p id="contact-text" class="text-gray-600 max-w-2xl mx-auto mb-10"></p>
 
-            // Skills
-            const designSkillsContainer = document.getElementById('design-skills-container');
-            portfolioData.skills.design.forEach(skill => {
-                const skillEl = document.createElement('div');
-                skillEl.innerHTML = `
-                    <div class="flex justify-between mb-1">
-                        <span class="text-base font-medium text-gray-700">${skill.name}</span>
-                        <span class="text-sm font-medium text-gray-700">${skill.value}%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 rounded-full h-2.5">
-                        <div class="bg-indigo-600 h-2.5 rounded-full" style="width: ${skill.value}%"></div>
-                    </div>
-                `;
-                designSkillsContainer.appendChild(skillEl);
-            });
-            
-            const marketingSkillsContainer = document.getElementById('marketing-skills-container');
-            portfolioData.skills.marketing.forEach(skill => {
-                const skillEl = document.createElement('div');
-                skillEl.innerHTML = `
-                    <div class="flex justify-between mb-1">
-                        <span class="text-base font-medium text-gray-700">${skill.name}</span>
-                        <span class="text-sm font-medium text-gray-700">${skill.value}%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 rounded-full h-2.5">
-                        <div class="bg-pink-600 h-2.5 rounded-full" style="width: ${skill.value}%"></div>
-                    </div>
-                `;
-                marketingSkillsContainer.appendChild(skillEl);
-            });
+      <!-- Contact Cards -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-10">
+        <a href="https://wa.me/94773027782" target="_blank" rel="noopener noreferrer" class="group rounded-xl border border-gray-200 bg-white p-5 text-left shadow-sm hover:shadow-md transition">
+          <div class="flex items-center gap-3 mb-2">
+            <img src="https://static-00.iconduck.com/assets.00/whatsapp-icon-512x512-z2ud7qta.png" alt="WhatsApp" class="h-6 w-6" loading="lazy" />
+            <h3 class="font-semibold">WhatsApp</h3>
+          </div>
+          <p class="text-gray-600">+94 77 302 7782</p>
+          <p class="text-indigo-600 mt-1 group-hover:underline">Message us</p>
+        </a>
+        <a href="mailto:induwara1203@gmail.com" class="group rounded-xl border border-gray-200 bg-white p-5 text-left shadow-sm hover:shadow-md transition">
+          <div class="flex items-center gap-3 mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+            <h3 class="font-semibold">Email</h3>
+          </div>
+          <p class="text-gray-600">induwara1203@gmail.com</p>
+          <p class="text-indigo-600 mt-1 group-hover:underline">Send email</p>
+        </a>
+        <a href="https://www.linkedin.com/in/induwara-pathirana/" target="_blank" rel="noopener noreferrer" class="group rounded-xl border border-gray-200 bg-white p-5 text-left shadow-sm hover:shadow-md transition">
+          <div class="flex items-center gap-3 mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <h3 class="font-semibold">LinkedIn</h3>
+          </div>
+          <p class="text-gray-600">Connect professionally</p>
+          <p class="text-indigo-600 mt-1 group-hover:underline">View profile</p>
+        </a>
+      </div>
 
-            // Projects
-            const projectsGrid = document.getElementById('projects-grid');
-            const projectFilters = document.getElementById('project-filters');
+      <!-- Social icons (rendered from your data below) -->
+      <div id="social-links-container" class="flex justify-center gap-6"></div>
+    </section>
+  </main>
 
-            const categories = ['All', ...new Set(portfolioData.projects.map(p => p.category))];
+  <footer class="bg-gray-900 text-gray-200 mt-8">
+    <div class="container mx-auto px-6 py-6 text-center text-sm">
+      <p>&copy; <span id="footer-year"></span> <span id="footer-name"></span>. All Rights Reserved.</p>
+    </div>
+  </footer>
 
-            categories.forEach(category => {
-                const button = document.createElement('button');
-                button.textContent = category;
-                button.className = 'px-4 py-2 rounded-md font-semibold transition duration-300';
-                button.dataset.category = category;
+  <script>
+    // === DATA: kept EXACTLY as you provided ===
+    const portfolioData = {
+      yourName: "VI Studio",
+      hero: {
+        headline: "For Creative Designs & Strategic Marketing",
+        subheadline: "We craft beautiful brand experiences and drive growth through data-informed marketing strategies."
+      },
+      about: {
+        image: "Heading.png",
+        text: "Hello! We are VI Studio, passionate designers and marketers with a knack for creating compelling visual narratives that resonate with audiences. With over 2 years of experience, We specialize in brand identity, digital marketing campaigns, and UI/UX design. We thrive on turning complex ideas into simple, elegant, and effective solutions."
+      },
+      skills: {
+        design: [
+          { name: "UI/UX Design", value: 95 },
+          { name: "Brand Identity & Logo Design", value: 90 },
+          { name: "Adobe Creative Suite (Ps, Ai, Id)", value: 82 },
+          { name: "Figma & Sketch", value: 88 },
+        ],
+        marketing: [
+          { name: "Digital Strategy", value: 90 },
+          { name: "Content Marketing & SEO", value: 85 },
+          { name: "Social Media Management", value: 88 },
+          { name: "Email Marketing Automation", value: 82 },
+        ]
+      },
+      projects: [
+        { title: "Jumping Beans Cafe: Rebranding & Social Media Marketing", category: "Marketing", description: "A complete brand identity overhaul for a cafe in Colombo", image: "project 1.png", link: "https://www.instagram.com/jumping_beans_cafe/" },
+        { title: "DigiYamu: Digital Bus Booking System", category: "UI/UX", description: "Futuristic Bus/Train Ticketing concept designed for Sri Lanka", image: "digiyamu_ui.png", link: "https://www.behance.net/gallery/222088883/DIGIyamu-your-public-transport-friend-in-Sri-Lanka" },
+        { title: "islanders.lk social media and web management", category: "Marketing", description: "From Logo Design to Brand awareness, to Website Management", image: "project 2.png", link: "https://www.instagram.com/islanders.lk_online/" },
+        { title: "Fleura Lifestyle: Marketing and Designing", category: "Marketing", description: "From Logo Design to Brand awareness, to Product Management", image: "project 3.png", link: "https://www.instagram.com/fleura.lifestyle/" },
+        { title: "Form Responses UI for Easy Analytics and Marketing", category: "UI/UX", description: "Form Responses with Analytics Windows and Easy Data reusable Ideas for Marketing Purposes", image: "formresponses_ui.png", link: "https://www.behance.net/gallery/215656263/Form-Responses-UI-for-Easy-Analytics" },
+        { title: "Dosa Hut for an Indian Restaurant in UK", category: "UI/UX", description: "Designed a UI design with all functionalities for an Indian Restaurant in UK", image: "dosahut_ui.png", link: "https://www.behance.net/gallery/192885321/Dosa-and-Biriyani-Hut" },
+        { title: "Job Opportunity Portal with AIESECxTwinery", category: "UI/UX", description: "Opportunities portal with AIESEC for promote Internships with Twinery", image: "aiesectwinery_ui.png", link: "https://www.behance.net/gallery/195221715/Partner-Landing-Page" },
+        { title: "Personal Loan Futuristic UI for Banks in Sri Lanka", category: "UI/UX", description: "Created conceptual secured UI design for Personal Loan Applying", image: "cim_ui.png", link: "https://www.behance.net/gallery/193803741/Personal-Loan-Application" },
+        { title: "Presentation/Slides Design for National Sustainable Innovation Conference ", category: "Presentation/Slides", description: "Designed the full slides set for MAS Innovations for their Competition", image: "mas_presentation.png", link: "https://www.behance.net/gallery/222595407/Presentation-on-Sustainably-Product-Manufacturing" }
+      ],
+      contact: {
+        text: "I'm currently available for freelance projects and full-time opportunities. Feel free to reach out via email or connect with me on social media!",
+        socials: [
+          { name: "Email", url: "mailto:induwara1203@gmail.com", icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>' },
+          { name: "LinkedIn", url: "https://www.linkedin.com/in/induwara-pathirana/", icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>' },
+          { name: "Behance", url: "https://www.behance.net/induwarabandara/", icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M16.5 6.5h-9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1zM7.5 14.5h9a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1zM10.5 10.5h-3"></path></svg>' }
+        ]
+      }
+    };
 
-                if (category === 'All') {
-                    button.classList.add('bg-indigo-600', 'text-white');
-                } else {
-                    button.classList.add('bg-gray-200', 'text-gray-800', 'hover:bg-gray-300');
-                }
+    // === RENDER ===
+    document.addEventListener('DOMContentLoaded', () => {
+      // title and footer
+      document.title = `${portfolioData.yourName} | Creative Designer & Marketer`;
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+      document.getElementById('footer-name').textContent = portfolioData.yourName;
 
-                button.addEventListener('click', (e) => {
-                    document.querySelectorAll('#project-filters button').forEach(btn => {
-                        btn.classList.remove('bg-indigo-600', 'text-white');
-                        btn.classList.add('bg-gray-200', 'text-gray-800', 'hover:bg-gray-300');
-                    });
-                    e.target.classList.add('bg-indigo-600', 'text-white');
-                    e.target.classList.remove('bg-gray-200', 'text-gray-800', 'hover:bg-gray-300');
+      // hero & about
+      document.getElementById('hero-headline').textContent = portfolioData.hero.headline;
+      document.getElementById('hero-subheadline').textContent = portfolioData.hero.subheadline;
+      document.getElementById('about-image').src = portfolioData.about.image;
+      document.getElementById('about-text').textContent = portfolioData.about.text;
+      document.getElementById('contact-text').textContent = portfolioData.contact.text;
 
-                    renderProjects(category);
-                });
-                projectFilters.appendChild(button);
-            });
-            
-            const renderProjects = (category) => {
-                projectsGrid.innerHTML = '';
-                
-                const filteredProjects = category === 'All'
-                    ? portfolioData.projects
-                    : portfolioData.projects.filter(p => p.category === category);
-
-                filteredProjects.forEach(project => {
-                    const projectEl = document.createElement('div');
-                    projectEl.className = 'bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col';
-                    projectEl.innerHTML = `
-                        <img src="${project.image}" alt="${project.title}" class="w-full h-56 object-cover">
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2">${project.title}</h3>
-                            <p class="text-gray-600 mb-4 flex-grow">${project.description}</p>
-                            <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="mt-auto inline-block bg-indigo-100 text-indigo-800 text-center px-4 py-2 rounded-md font-semibold hover:bg-indigo-200 transition duration-300">
-                                View Project
-                            </a>
-                        </div>
-                    `;
-                    projectsGrid.appendChild(projectEl);
-                });
-            }
-
-            renderProjects('All');
-            
-            // Social Links
-            const socialContainer = document.getElementById('social-links-container');
-            portfolioData.contact.socials.forEach(social => {
-                const link = document.createElement('a');
-                link.href = social.url;
-                link.target = '_blank';
-                link.rel = 'noopener noreferrer';
-                link.title = social.name;
-                link.className = 'text-gray-500 hover:text-indigo-600 transition duration-300';
-                link.innerHTML = social.icon;
-                socialContainer.appendChild(link);
-            });
-            
-            // Mobile Menu Toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+      // skill bars
+      const addSkills = (arr, containerId, barClass) => {
+        const el = document.getElementById(containerId);
+        arr.forEach(skill => {
+          const wrapper = document.createElement('div');
+          wrapper.innerHTML = `
+            <div class="flex justify-between mb-1">
+              <span class="text-base font-medium text-gray-700">${skill.name}</span>
+              <span class="text-sm font-medium text-gray-700">${skill.value}%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5" role="progressbar" aria-valuenow="${skill.value}" aria-valuemin="0" aria-valuemax="100">
+              <div class="${barClass} h-2.5 rounded-full" style="width: ${skill.value}%"></div>
+            </div>`;
+          el.appendChild(wrapper);
         });
+      };
+      addSkills(portfolioData.skills.design, 'design-skills-container', 'bg-indigo-600');
+      addSkills(portfolioData.skills.marketing, 'marketing-skills-container', 'bg-pink-600');
 
-    </script>
+      // projects & filters
+      const projectsGrid = document.getElementById('projects-grid');
+      const projectFilters = document.getElementById('project-filters');
+      const categories = ['All', ...new Set(portfolioData.projects.map(p => p.category))];
+
+      const renderProjects = (category) => {
+        projectsGrid.innerHTML = '';
+        const list = category === 'All' ? portfolioData.projects : portfolioData.projects.filter(p => p.category === category);
+        list.forEach(project => {
+          const card = document.createElement('article');
+          card.className = 'bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden transition hover:shadow-md focus-within:ring-2 focus-within:ring-indigo-600';
+          card.innerHTML = `
+            <img src="${project.image}" alt="${project.title}" class="w-full h-56 object-cover" loading="lazy" />
+            <div class="p-6 flex flex-col gap-3">
+              <div class="flex items-center justify-between gap-3">
+                <h3 class="text-lg font-semibold">${project.title}</h3>
+                <span class="inline-flex items-center rounded-full bg-indigo-50 text-indigo-700 text-xs font-medium px-3 py-1">${project.category}</span>
+              </div>
+              <p class="text-gray-600">${project.description}</p>
+              <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="inline-flex w-fit items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-indigo-700">
+                View Project
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
+            </div>`;
+          projectsGrid.appendChild(card);
+        });
+      };
+
+      categories.forEach((cat, i) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = cat;
+        btn.dataset.category = cat;
+        btn.className = 'px-4 py-2 rounded-md font-semibold border transition';
+        if (i === 0) {
+          btn.classList.add('bg-indigo-600','text-white','border-indigo-600');
+          btn.setAttribute('aria-pressed','true');
+        } else {
+          btn.classList.add('bg-white','text-gray-800','border-gray-200','hover:bg-gray-50');
+          btn.setAttribute('aria-pressed','false');
+        }
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('#project-filters button').forEach(b => {
+            b.className = 'px-4 py-2 rounded-md font-semibold border transition bg-white text-gray-800 border-gray-200 hover:bg-gray-50';
+            b.setAttribute('aria-pressed','false');
+          });
+          e.currentTarget.className = 'px-4 py-2 rounded-md font-semibold border transition bg-indigo-600 text-white border-indigo-600';
+          e.currentTarget.setAttribute('aria-pressed','true');
+          renderProjects(cat);
+        });
+        projectFilters.appendChild(btn);
+      });
+      renderProjects('All');
+
+      // social links (from your provided data)
+      const socialContainer = document.getElementById('social-links-container');
+      portfolioData.contact.socials.forEach(s => {
+        const a = document.createElement('a');
+        a.href = s.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.title = s.name;
+        a.className = 'text-gray-500 hover:text-indigo-600 transition';
+        a.innerHTML = s.icon;
+        socialContainer.appendChild(a);
+      });
+
+      // mobile menu
+      const toggleBtn = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      toggleBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        toggleBtn.setAttribute('aria-expanded', String(!isHidden));
+      });
+
+      // reveal on scroll
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    });
+  </script>
+
+  <!-- Lightweight JSON-LD (optional, helps SEO; uses your exact details) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "VI Studio",
+    "url": "",
+    "logo": "Heading.png",
+    "sameAs": [
+      "mailto:induwara1203@gmail.com",
+      "https://www.linkedin.com/in/induwara-pathirana/",
+      "https://www.behance.net/induwarabandara/",
+      "https://wa.me/94773027782"
+    ]
+  }
+  </script>
 </body>
 </html>
-
