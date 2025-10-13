@@ -18,16 +18,24 @@
   <style>
     :root { --ring: 0 0% 100%; }
     body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
-    /* Behance responsive wrapper */
-    .behance-embed { position: relative; width: 100%; padding-bottom: 62.5%; height: 0; overflow: hidden; border-radius: .75rem; }
-    .behance-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-    /* fade / rise on scroll */
     .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.show { opacity: 1; transform: none; }
+    .slide { position: absolute; inset: 0; opacity: 0; transform: scale(1.02); transition: opacity 800ms ease, transform 1200ms ease; }
+    .slide.active { opacity: 1; transform: scale(1); }
+    .slide::before { content: ""; position: absolute; inset:0; background: radial-gradient(1200px 500px at 70% 20%, rgba(79,70,229,.35), transparent), linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,.15)); pointer-events:none; }
+    .behance-embed { display:none; }
   </style>
+  <script>
+    // Dark mode: respect system + remember choice
+    (function(){
+      const saved = localStorage.getItem('theme');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && systemDark)) document.documentElement.classList.add('dark');
+    })();
+  </script>
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <!-- Top Announcement / Contact Quick Bar -->
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100">
+  <!-- Quick Contact Bar -->
   <div class="bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-600 text-white">
     <div class="container mx-auto px-6 py-2 text-sm flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
       <span class="inline-flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3 4.18 2 2 0 0 1 5 2h2.09a2 2 0 0 1 2 1.72c.12.89.32 1.76.59 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.12a2 2 0 0 1 2.11-.45c.84.27 1.71.47 2.6.59A2 2 0 0 1 22 16.92z"/></svg> WhatsApp: <a class="underline underline-offset-2 hover:opacity-90" href="https://wa.me/94773027782" target="_blank" rel="noopener noreferrer">+94 77 302 7782</a></span>
@@ -37,42 +45,71 @@
   </div>
 
   <!-- Header / Nav -->
-  <header id="header" class="bg-white/80 backdrop-blur supports-[backdrop-filter]:backdrop-blur sticky top-0 z-50 shadow-sm">
+  <header id="header" class="bg-white/70 dark:bg-gray-900/70 backdrop-blur sticky top-0 z-50 shadow-sm">
     <nav class="container mx-auto px-6 py-4 flex items-center justify-between" aria-label="Primary">
-      <a href="#hero" class="inline-flex items-center gap-3" aria-label="VI Studio Home">
+      <a href="#slideshow" class="inline-flex items-center gap-3" aria-label="VI Studio Home">
         <img src="Heading.png" alt="VI Studio logo" class="h-10 w-auto" loading="eager" />
       </a>
-      <ul class="hidden md:flex items-center gap-8">
-        <li><a href="#about" class="nav-link text-gray-700 hover:text-indigo-600">About</a></li>
-        <li><a href="#skills" class="nav-link text-gray-700 hover:text-indigo-600">Skills</a></li>
-        <li><a href="#work" class="nav-link text-gray-700 hover:text-indigo-600">Our Work</a></li>
-        <li><a href="#behance" class="nav-link text-gray-700 hover:text-indigo-600">Behance</a></li>
-        <li><a href="#contact" class="inline-flex items-center bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Contact</a></li>
+      <ul class="hidden md:flex items-center gap-6">
+        <li><a href="#about" class="nav-link text-gray-700 dark:text-gray-200 hover:text-indigo-600">About</a></li>
+        <li><a href="#skills" class="nav-link text-gray-700 dark:text-gray-200 hover:text-indigo-600">Skills</a></li>
+        <li><a href="#work" class="nav-link text-gray-700 dark:text-gray-200 hover:text-indigo-600">Our Work</a></li>
+        <li><a href="#contact" class="nav-link text-gray-700 dark:text-gray-200 hover:text-indigo-600">Contact</a></li>
+        <li>
+          <a href="https://www.behance.net/induwarabandara/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-md border border-indigo-600 text-indigo-600 px-3 py-2 font-semibold hover:bg-indigo-600 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 6.5h-9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1zM7.5 14.5h9a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1zM10.5 10.5h-3"></path></svg>
+            Follow on Behance
+          </a>
+        </li>
+        <li>
+          <button id="theme-toggle" class="inline-flex items-center gap-2 rounded-md border border-gray-200 dark:border-gray-700 px-3 py-2 font-medium hover:bg-gray-50 dark:hover:bg-gray-800" aria-label="Toggle theme">
+            <span class="sr-only">Toggle dark mode</span>
+            <svg id="icon-sun" class="h-5 w-5 block dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            <svg id="icon-moon" class="h-5 w-5 hidden dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </li>
       </ul>
-      <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-gray-200 hover:bg-gray-100" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </nav>
     <div id="mobile-menu" class="md:hidden hidden px-6 pb-6">
-      <div class="grid gap-2 rounded-lg border border-gray-200 p-3 bg-white shadow-sm">
-        <a href="#about" class="block px-3 py-2 rounded hover:bg-gray-50">About</a>
-        <a href="#skills" class="block px-3 py-2 rounded hover:bg-gray-50">Skills</a>
-        <a href="#work" class="block px-3 py-2 rounded hover:bg-gray-50">Our Work</a>
-        <a href="#behance" class="block px-3 py-2 rounded hover:bg-gray-50">Behance</a>
-        <a href="#contact" class="block px-3 py-2 rounded bg-indigo-600 text-white hover:bg-indigo-700">Contact</a>
+      <div class="grid gap-2 rounded-lg border border-gray-200 dark:border-gray-800 p-3 bg-white dark:bg-gray-900 shadow-sm">
+        <a href="#about" class="block px-3 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800">About</a>
+        <a href="#skills" class="block px-3 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800">Skills</a>
+        <a href="#work" class="block px-3 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800">Our Work</a>
+        <a href="#contact" class="block px-3 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800">Contact</a>
+        <a href="https://www.behance.net/induwarabandara/" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 rounded border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white">Follow on Behance</a>
+        <button id="theme-toggle-mobile" class="mt-1 block px-3 py-2 rounded border border-gray-200 dark:border-gray-700">Toggle theme</button>
       </div>
     </div>
   </header>
 
   <main class="container mx-auto px-6">
-    <!-- Hero -->
-    <section id="hero" class="relative py-20 md:py-28 text-center">
-      <div class="absolute inset-0 -z-10 bg-gradient-to-b from-indigo-50 via-white to-white"></div>
+    <!-- Futuristic Slideshow (Apple-like) -->
+    <section id="slideshow" class="relative h-[68vh] md:h-[78vh] rounded-2xl overflow-hidden my-6">
+      <div id="slides" class="absolute inset-0">
+        <!-- Slides are injected from projects -->
+      </div>
+      <!-- Controls -->
+      <div class="absolute inset-x-0 bottom-4 flex items-center justify-between px-4 md:px-6">
+        <button id="prevBtn" class="rounded-full bg-black/40 dark:bg-white/20 backdrop-blur text-white dark:text-white p-2 hover:bg-black/60" aria-label="Previous slide">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <div id="dots" class="flex items-center gap-2"></div>
+        <button id="nextBtn" class="rounded-full bg-black/40 dark:bg-white/20 backdrop-blur text-white dark:text-white p-2 hover:bg-black/60" aria-label="Next slide">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Hero copy (kept) -->
+    <section id="hero" class="py-12 md:py-16 text-center">
       <h1 id="hero-headline" class="text-4xl md:text-6xl font-bold leading-tight mb-4"></h1>
-      <p id="hero-subheadline" class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8"></p>
+      <p id="hero-subheadline" class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8"></p>
       <div class="flex justify-center gap-4">
-        <a href="#work" class="bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">View Our Work</a>
-        <a href="#contact" class="bg-white border border-gray-200 text-gray-900 px-6 py-3 rounded-md font-semibold hover:bg-gray-50">Get In Touch</a>
+        <a href="#work" class="bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700">View Our Work</a>
+        <a href="#contact" class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 dark:hover:bg-gray-800">Get In Touch</a>
       </div>
     </section>
 
@@ -84,16 +121,16 @@
         </div>
         <div class="md:col-span-3">
           <h2 class="text-3xl font-bold mb-4">About Us</h2>
-          <p id="about-text" class="text-gray-600 leading-relaxed"></p>
+          <p id="about-text" class="text-gray-600 dark:text-gray-300 leading-relaxed"></p>
         </div>
       </div>
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="py-16 md:py-20 bg-white rounded-2xl shadow-sm reveal">
+    <section id="skills" class="py-16 md:py-20 bg-white dark:bg-gray-900 rounded-2xl shadow-sm reveal">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold">Who we are</h2>
-        <p class="text-gray-600 mt-2">A blend of creativity and strategic marketing.</p>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">A blend of creativity and strategic marketing.</p>
       </div>
       <div class="grid md:grid-cols-2 gap-12">
         <div>
@@ -111,56 +148,50 @@
     <section id="work" class="py-16 md:py-20 reveal">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold">Our Work</h2>
-        <p class="text-gray-600 mt-2">Here are some of our favorite projects.</p>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">Here are some of our favorite projects.</p>
       </div>
       <div id="project-filters" class="flex justify-center flex-wrap gap-2 mb-10"></div>
       <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </section>
 
-    <!-- Behance -->
-    <section id="behance" class="py-16 md:py-20 bg-gray-100 rounded-2xl reveal">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold">Featured on Behance</h2>
-        <p class="text-gray-600 mt-2">Dive deeper into my creative process and project details.</p>
-      </div>
-      <!-- Paste your Behance iframe embed below (kept empty by default to preserve your content) -->
-      <div class="behance-embed bg-white/50 border border-gray-200"></div>
+    <!-- Behance CTA (embed removed) -->
+    <section class="py-12 md:py-16 text-center reveal">
+      <a href="https://www.behance.net/induwarabandara/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 rounded-lg border border-indigo-600 text-indigo-600 px-5 py-3 font-semibold hover:bg-indigo-600 hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 6.5h-9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1zM7.5 14.5h9a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1zM10.5 10.5h-3"></path></svg>
+        Follow our Behance profile
+      </a>
     </section>
 
     <!-- Contact -->
     <section id="contact" class="py-16 md:py-20 text-center reveal">
       <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
-      <p id="contact-text" class="text-gray-600 max-w-2xl mx-auto mb-10"></p>
-
-      <!-- Contact Cards -->
+      <p id="contact-text" class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10"></p>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-10">
-        <a href="https://wa.me/94773027782" target="_blank" rel="noopener noreferrer" class="group rounded-xl border border-gray-200 bg-white p-5 text-left shadow-sm hover:shadow-md transition">
+        <a href="https://wa.me/94773027782" target="_blank" rel="noopener noreferrer" class="group rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 text-left shadow-sm hover:shadow-md transition">
           <div class="flex items-center gap-3 mb-2">
             <img src="https://static-00.iconduck.com/assets.00/whatsapp-icon-512x512-z2ud7qta.png" alt="WhatsApp" class="h-6 w-6" loading="lazy" />
             <h3 class="font-semibold">WhatsApp</h3>
           </div>
-          <p class="text-gray-600">+94 77 302 7782</p>
+          <p class="text-gray-600 dark:text-gray-300">+94 77 302 7782</p>
           <p class="text-indigo-600 mt-1 group-hover:underline">Message us</p>
         </a>
-        <a href="mailto:induwara1203@gmail.com" class="group rounded-xl border border-gray-200 bg-white p-5 text-left shadow-sm hover:shadow-md transition">
+        <a href="mailto:induwara1203@gmail.com" class="group rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 text-left shadow-sm hover:shadow-md transition">
           <div class="flex items-center gap-3 mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
             <h3 class="font-semibold">Email</h3>
           </div>
-          <p class="text-gray-600">induwara1203@gmail.com</p>
+          <p class="text-gray-600 dark:text-gray-300">induwara1203@gmail.com</p>
           <p class="text-indigo-600 mt-1 group-hover:underline">Send email</p>
         </a>
-        <a href="https://www.linkedin.com/in/induwara-pathirana/" target="_blank" rel="noopener noreferrer" class="group rounded-xl border border-gray-200 bg-white p-5 text-left shadow-sm hover:shadow-md transition">
+        <a href="https://www.linkedin.com/in/induwara-pathirana/" target="_blank" rel="noopener noreferrer" class="group rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 text-left shadow-sm hover:shadow-md transition">
           <div class="flex items-center gap-3 mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             <h3 class="font-semibold">LinkedIn</h3>
           </div>
-          <p class="text-gray-600">Connect professionally</p>
+          <p class="text-gray-600 dark:text-gray-300">Connect professionally</p>
           <p class="text-indigo-600 mt-1 group-hover:underline">View profile</p>
         </a>
       </div>
-
-      <!-- Social icons (rendered from your data below) -->
       <div id="social-links-container" class="flex justify-center gap-6"></div>
     </section>
   </main>
@@ -172,7 +203,7 @@
   </footer>
 
   <script>
-    // === DATA: kept EXACTLY as you provided ===
+    // === DATA: exactly as you provided ===
     const portfolioData = {
       yourName: "VI Studio",
       hero: {
@@ -218,7 +249,6 @@
       }
     };
 
-    // === RENDER ===
     document.addEventListener('DOMContentLoaded', () => {
       // title and footer
       document.title = `${portfolioData.yourName} | Creative Designer & Marketer`;
@@ -232,18 +262,18 @@
       document.getElementById('about-text').textContent = portfolioData.about.text;
       document.getElementById('contact-text').textContent = portfolioData.contact.text;
 
-      // skill bars
+      // skills
       const addSkills = (arr, containerId, barClass) => {
         const el = document.getElementById(containerId);
         arr.forEach(skill => {
           const wrapper = document.createElement('div');
           wrapper.innerHTML = `
-            <div class="flex justify-between mb-1">
-              <span class="text-base font-medium text-gray-700">${skill.name}</span>
-              <span class="text-sm font-medium text-gray-700">${skill.value}%</span>
+            <div class=\"flex justify-between mb-1\">
+              <span class=\"text-base font-medium text-gray-700 dark:text-gray-200\">${skill.name}</span>
+              <span class=\"text-sm font-medium text-gray-700 dark:text-gray-200\">${skill.value}%</span>
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5" role="progressbar" aria-valuenow="${skill.value}" aria-valuemin="0" aria-valuemax="100">
-              <div class="${barClass} h-2.5 rounded-full" style="width: ${skill.value}%"></div>
+            <div class=\"w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5\" role=\"progressbar\" aria-valuenow=\"${skill.value}\" aria-valuemin=\"0\" aria-valuemax=\"100\">
+              <div class=\"${barClass} h-2.5 rounded-full\" style=\"width: ${skill.value}%\"></div>
             </div>`;
           el.appendChild(wrapper);
         });
@@ -251,7 +281,7 @@
       addSkills(portfolioData.skills.design, 'design-skills-container', 'bg-indigo-600');
       addSkills(portfolioData.skills.marketing, 'marketing-skills-container', 'bg-pink-600');
 
-      // projects & filters
+      // projects grid & filters
       const projectsGrid = document.getElementById('projects-grid');
       const projectFilters = document.getElementById('project-filters');
       const categories = ['All', ...new Set(portfolioData.projects.map(p => p.category))];
@@ -261,18 +291,18 @@
         const list = category === 'All' ? portfolioData.projects : portfolioData.projects.filter(p => p.category === category);
         list.forEach(project => {
           const card = document.createElement('article');
-          card.className = 'bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden transition hover:shadow-md focus-within:ring-2 focus-within:ring-indigo-600';
+          card.className = 'bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden transition hover:shadow-md';
           card.innerHTML = `
-            <img src="${project.image}" alt="${project.title}" class="w-full h-56 object-cover" loading="lazy" />
-            <div class="p-6 flex flex-col gap-3">
-              <div class="flex items-center justify-between gap-3">
-                <h3 class="text-lg font-semibold">${project.title}</h3>
-                <span class="inline-flex items-center rounded-full bg-indigo-50 text-indigo-700 text-xs font-medium px-3 py-1">${project.category}</span>
+            <img src=\"${project.image}\" alt=\"${project.title}\" class=\"w-full h-56 object-cover\" loading=\"lazy\" />
+            <div class=\"p-6 flex flex-col gap-3\">
+              <div class=\"flex items-center justify-between gap-3\">
+                <h3 class=\"text-lg font-semibold\">${project.title}</h3>
+                <span class=\"inline-flex items-center rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-medium px-3 py-1\">${project.category}</span>
               </div>
-              <p class="text-gray-600">${project.description}</p>
-              <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="inline-flex w-fit items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-indigo-700">
+              <p class=\"text-gray-600 dark:text-gray-300\">${project.description}</p>
+              <a href=\"${project.link}\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex w-fit items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-indigo-700\">
                 View Project
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17L17 7\"/><path d=\"M7 7h10v10\"/></svg>
               </a>
             </div>`;
           projectsGrid.appendChild(card);
@@ -289,12 +319,12 @@
           btn.classList.add('bg-indigo-600','text-white','border-indigo-600');
           btn.setAttribute('aria-pressed','true');
         } else {
-          btn.classList.add('bg-white','text-gray-800','border-gray-200','hover:bg-gray-50');
+          btn.classList.add('bg-white','dark:bg-gray-900','text-gray-800','dark:text-gray-100','border-gray-200','dark:border-gray-800','hover:bg-gray-50','dark:hover:bg-gray-800');
           btn.setAttribute('aria-pressed','false');
         }
         btn.addEventListener('click', (e) => {
           document.querySelectorAll('#project-filters button').forEach(b => {
-            b.className = 'px-4 py-2 rounded-md font-semibold border transition bg-white text-gray-800 border-gray-200 hover:bg-gray-50';
+            b.className = 'px-4 py-2 rounded-md font-semibold border transition bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800';
             b.setAttribute('aria-pressed','false');
           });
           e.currentTarget.className = 'px-4 py-2 rounded-md font-semibold border transition bg-indigo-600 text-white border-indigo-600';
@@ -304,6 +334,53 @@
         projectFilters.appendChild(btn);
       });
       renderProjects('All');
+
+      // Build slideshow from projects
+      const slidesEl = document.getElementById('slides');
+      const dotsEl = document.getElementById('dots');
+      const makeSlide = (project, idx) => {
+        const s = document.createElement('div');
+        s.className = 'slide';
+        s.style.background = `center/cover no-repeat url('${project.image}')`;
+        s.innerHTML = `
+          <div class=\"absolute inset-0\"></div>
+          <div class=\"absolute bottom-0 left-0 right-0 p-6 md:p-10\">
+            <div class=\"max-w-3xl\">
+              <span class=\"inline-flex items-center rounded-full bg-white/70 dark:bg-gray-900/50 text-gray-900 dark:text-gray-100 text-xs font-semibold px-3 py-1 mb-3 backdrop-blur\">${project.category}</span>
+              <h3 class=\"text-2xl md:text-4xl font-bold text-white\">${project.title}</h3>
+              <p class=\"mt-2 text-white/90 max-w-2xl\">${project.description}</p>
+              <a href=\"${project.link}\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"mt-4 inline-flex items-center gap-2 bg-white/90 text-gray-900 px-4 py-2 rounded-md font-semibold hover:bg-white\">
+                View Project
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17L17 7\"/><path d=\"M7 7h10v10\"/></svg>
+              </a>
+            </div>
+          </div>`;
+        slidesEl.appendChild(s);
+
+        const dot = document.createElement('button');
+        dot.className = 'h-2.5 w-2.5 rounded-full bg-white/60 hover:bg-white aria-[current=true]:bg-white shadow';
+        dot.setAttribute('aria-label', `Go to slide ${idx+1}`);
+        dot.addEventListener('click', () => setSlide(idx));
+        dotsEl.appendChild(dot);
+      };
+      portfolioData.projects.forEach((p, i) => makeSlide(p, i));
+
+      let current = 0, timer; const slides = Array.from(document.querySelectorAll('.slide')); const dots = Array.from(dotsEl.children);
+      function setSlide(i){
+        slides[current]?.classList.remove('active'); dots[current]?.setAttribute('aria-current','false');
+        current = (i + slides.length) % slides.length;
+        slides[current].classList.add('active'); dots[current].setAttribute('aria-current','true');
+      }
+      function next(){ setSlide(current+1); }
+      function prev(){ setSlide(current-1); }
+      function play(){ timer = setInterval(next, 5000); }
+      function stop(){ clearInterval(timer); }
+      setSlide(0); play();
+
+      document.getElementById('nextBtn').addEventListener('click', ()=>{ stop(); next(); play(); });
+      document.getElementById('prevBtn').addEventListener('click', ()=>{ stop(); prev(); play(); });
+      slidesEl.addEventListener('mouseenter', stop);
+      slidesEl.addEventListener('mouseleave', play);
 
       // social links (from your provided data)
       const socialContainer = document.getElementById('social-links-container');
@@ -323,6 +400,21 @@
         toggleBtn.setAttribute('aria-expanded', String(!isHidden));
       });
 
+      // theme toggles
+      const applyTheme = (t) => {
+        if (t === 'dark') document.documentElement.classList.add('dark');
+        else document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', t);
+      };
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        applyTheme(isDark ? 'light' : 'dark');
+      });
+      document.getElementById('theme-toggle-mobile').addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        applyTheme(isDark ? 'light' : 'dark');
+      });
+
       // reveal on scroll
       const io = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
@@ -331,13 +423,12 @@
     });
   </script>
 
-  <!-- Lightweight JSON-LD (optional, helps SEO; uses your exact details) -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "VI Studio",
-    "url": "",
     "logo": "Heading.png",
     "sameAs": [
       "mailto:induwara1203@gmail.com",
