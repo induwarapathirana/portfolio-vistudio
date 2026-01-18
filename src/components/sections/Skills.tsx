@@ -13,7 +13,7 @@ export default function Skills() {
                 </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-16 md:gap-24">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-12">
                 {/* Design Skills */}
                 <div>
                     <h3 className="text-2xl font-semibold mb-8 flex items-center gap-3">
@@ -59,6 +59,34 @@ export default function Skills() {
                                         transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
                                         viewport={{ once: true }}
                                         className="h-full bg-gradient-to-r from-pink-500 to-rose-500"
+                                    />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+
+                {/* Development Skills */}
+                <div>
+                    <h3 className="text-2xl font-semibold mb-8 flex items-center gap-3">
+                        <span className="w-8 h-1 bg-cyan-500 rounded-full"></span> Development
+                    </h3>
+                    <div className="space-y-8">
+                        {/* @ts-ignore - Dynamic key access */}
+                        {portfolioData.skills.development?.map((skill, i) => (
+                            <div key={skill.name}>
+                                <div className="flex justify-between mb-2">
+                                    <span className="font-medium text-lg">{skill.name}</span>
+                                    <span className="text-muted-foreground">{skill.value}%</span>
+                                </div>
+                                <div className="h-2 bg-secondary rounded-full overflow-hidden">
+                                    <motion.div
+                                        initial={{ width: 0 }}
+                                        whileInView={{ width: `${skill.value}%` }}
+                                        transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
+                                        viewport={{ once: true }}
+                                        className="h-full bg-gradient-to-r from-cyan-500 to-blue-500"
                                     />
                                 </div>
                             </div>

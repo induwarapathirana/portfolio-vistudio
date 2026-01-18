@@ -21,6 +21,12 @@ export const portfolioData = {
             { name: "Content Marketing & SEO", value: 85 },
             { name: "Social Media Management", value: 88 },
             { name: "Email Marketing Automation", value: 82 },
+        ],
+        development: [
+            { name: "Web Development", value: 95 },
+            { name: "Next.js / React", value: 90 },
+            { name: "Frontend Architecture", value: 85 },
+            { name: "Full Stack Integration", value: 80 },
         ]
     },
     projects: [

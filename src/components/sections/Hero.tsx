@@ -20,7 +20,7 @@ export default function Hero() {
                 <span className="inline-block py-1 px-3 mb-6 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium tracking-wide">
                     {portfolioData.yourName}
                 </span>
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-wb from-white via-white/90 to-white/50 bg-300%">
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/50 bg-300%">
                     {portfolioData.hero.headline}
                 </h1>
                 <p className="text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-10">
