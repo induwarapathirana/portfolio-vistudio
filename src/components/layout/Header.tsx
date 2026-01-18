@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { portfolioData } from "@/data/portfolio";
+import Image from "next/image";
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
@@ -28,8 +29,15 @@ export default function Header() {
             )}
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
-                <a href="#" className="font-bold text-xl tracking-tight">
-                    {portfolioData.yourName}
+                <a href="#" className="flex items-center">
+                    <Image
+                        src="/Heading.png"
+                        alt={portfolioData.yourName}
+                        width={150}
+                        height={40}
+                        className="h-10 w-auto object-contain"
+                        priority
+                    />
                 </a>
 
                 <nav className="hidden md:flex gap-8">
