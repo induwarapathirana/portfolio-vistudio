@@ -30,6 +30,10 @@ export const portfolioData = {
         ]
     },
     projects: [
+        { title: "Sweatshop Fitness: Premier Online Store", category: "Web Development", description: "Top Tier e-commerce implementation for fitness gear", image: "/sweatshop.png", link: "https://sweatshop.lk" },
+        { title: "Vow & Venue: Wedding Planner by Islanders", category: "Web Development", description: "Comprehensive wedding planning platform for Sri Lanka", image: "/weddingplanner.png", link: "https://weddingplanner.islanders.lk" },
+        { title: "Image & QR Toolkit", category: "Web Development", description: "Image processing and QR code generation utility", image: "/imageandqr.png", link: "https://imageandqr.com" },
+        { title: "Sri Lanka Expressway Bus Timetable v2", category: "Web Development", description: "Public transport scheduling application (Beginner Friendly)", image: "/bustimetable.png", link: "https://bustimetable-v2.web.app/" },
         { title: "Jumping Beans Cafe: Rebranding & Social Media Marketing", category: "Marketing", description: "A complete brand identity overhaul for a cafe in Colombo", image: "/project 1.png", link: "https://www.instagram.com/jumping_beans_cafe/" },
         { title: "DigiYamu: Digital Bus Booking System", category: "UI/UX", description: "Futuristic Bus/Train Ticketing concept designed for Sri Lanka", image: "/digiyamu_ui.png", link: "https://www.behance.net/gallery/222088883/DIGIyamu-your-public-transport-friend-in-Sri-Lanka" },
         { title: "islanders.lk social media and web management", category: "Marketing", description: "From Logo Design to Brand awareness, to Website Management", image: "/project 2.png", link: "https://www.instagram.com/islanders.lk_online/" },
