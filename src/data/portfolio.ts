@@ -30,6 +30,8 @@ export const portfolioData = {
         ]
     },
     projects: [
+        { title: "Hotel Ramrich: Luxury Hotel & Banquets", category: "Web Development", description: "Elegant website showcasing one of the largest banquet halls in Sri Lanka, featuring magnificent halls and luxury interiors.", image: "/hotel-ramrich.png", link: "https://hotel-ramrich-banquets.web.app/" },
+        { title: "Lounge 171: Cafe & Dining", category: "Web Development", description: "Modern website for a cozy, rustic cafe and casual dining spot in Maharagama, serving burgers, pizzas, and coffee.", image: "/171-cafe-sample.png", link: "https://cafe-lounge.web.app/" },
         { title: "Sweatshop Fitness: Premier Online Store", category: "Web Development", description: "Top Tier e-commerce implementation for fitness gear", image: "/sweatshop.png", link: "https://sweatshop.lk" },
         { title: "Vow & Venue: Wedding Planner by Islanders", category: "Web Development", description: "Comprehensive wedding planning platform for Sri Lanka", image: "/weddingplanner.png", link: "https://weddingplanner.islanders.lk" },
         { title: "Image & QR Toolkit", category: "Web Development", description: "Image processing and QR code generation utility", image: "/imageandqr.png", link: "https://imageandqr.com" },
@@ -43,6 +45,17 @@ export const portfolioData = {
         { title: "Job Opportunity Portal with AIESECxTwinery", category: "UI/UX", description: "Opportunities portal with AIESEC for promote Internships with Twinery", image: "/aiesectwinery_ui.png", link: "https://www.behance.net/gallery/195221715/Partner-Landing-Page" },
         { title: "Personal Loan Futuristic UI for Banks in Sri Lanka", category: "UI/UX", description: "Created conceptual secured UI design for Personal Loan Applying", image: "/cim_ui.png", link: "https://www.behance.net/gallery/193803741/Personal-Loan-Application" },
         { title: "Presentation/Slides Design for National Sustainable Innovation Conference ", category: "Presentation/Slides", description: "Designed the full slides set for MAS Innovations for their Competition", image: "/mas_presentation.png", link: "https://www.behance.net/gallery/222595407/Presentation-on-Sustainably-Product-Manufacturing" }
+    ],
+    logos: [
+        { title: "VI Studio Branding", image: "/logo-designs/vi studio.png", description: "Official visual identity and emblem designed for VI Studio." },
+        { title: "Ceylon Tabi", image: "/logo-designs/ceylon tabi logo.png", description: "Travel and hospitality logo combining cultural motifs with a modern aesthetic." },
+        { title: "Ceylux", image: "/logo-designs/ceylux for dp.png", description: "Premium identity design combining luxury and modern typography." },
+        { title: "Oven Stories", image: "/logo-designs/Oven Stories.png", description: "Warm, inviting branding designed for an artisan bakery." },
+        { title: "Legends of Watan", image: "/logo-designs/legends of watan.png", description: "Intricate, bold emblem designed for a cultural and heritage brand." },
+        { title: "FleuraSole", image: "/logo-designs/FleuraSole (2).png", description: "Delicate and minimalist brand design for a floral lifestyle boutique." },
+        { title: "VI Studio Identity & Slogan", image: "/logo-designs/slogan and full logo.png", description: "Comprehensive logo layout showcasing the official VI Studio slogan and typography." },
+        { title: "Creative Branding Concept", image: "/logo-designs/ChatGPT Image May 18, 2025, 10_22_10 PM.png", description: "Futuristic visual storytelling design concept." },
+        { title: "Modern Promotion Art", image: "/logo-designs/Black and White Modern Giveaway Instagram Post.png", description: "Sleek and bold black-and-white promotional identity layout." }
     ],
     contact: {
         text: "I'm currently available for freelance projects and full-time opportunities. Feel free to reach out via email or connect with me on social media!",
