@@ -31,7 +31,7 @@ export const portfolioData = {
     },
     projects: [
         { title: "Hotel Ramrich: Luxury Hotel & Banquets", category: "Web Development", description: "Elegant website showcasing one of the largest banquet halls in Sri Lanka, featuring magnificent halls and luxury interiors.", image: "/hotel-ramrich.png", link: "https://hotel-ramrich-banquets.web.app/" },
-        { title: "Lounge 171: Cafe & Dining", category: "Web Development", description: "Modern website for a cozy, rustic cafe and casual dining spot in Maharagama, serving burgers, pizzas, and coffee.", image: "/171-cafe-sample.png", link: "https://cafe-lounge.web.app/" },
+        { title: "Cafe Landing Page", category: "Web Development", description: "Modern website for a cozy, rustic cafe and casual dining spot in Maharagama, serving burgers, pizzas, and coffee.", image: "/171-cafe-sample.png", link: "https://cafe-lounge.web.app/" },
         { title: "Sweatshop Fitness: Premier Online Store", category: "Web Development", description: "Top Tier e-commerce implementation for fitness gear", image: "/sweatshop.png", link: "https://sweatshop.lk" },
         { title: "Vow & Venue: Wedding Planner by Islanders", category: "Web Development", description: "Comprehensive wedding planning platform for Sri Lanka", image: "/weddingplanner.png", link: "https://weddingplanner.islanders.lk" },
         { title: "Image & QR Toolkit", category: "Web Development", description: "Image processing and QR code generation utility", image: "/imageandqr.png", link: "https://imageandqr.com" },
